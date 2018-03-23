@@ -1,0 +1,27 @@
+.upload-holder {
+  display: block;
+  position: relative;
+  border-radius: .25em;
+  overflow: hidden;
+  background-color: #465362;
+  color: #ffffff;
+  font-size: 1.25em;
+  height: 100%;
+  line-height: 51px;
+  padding: 0 1em;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin: 0 15px;
+  &:hover {
+    background-color: #3f667e;
+  }
+}
+
+.upload-input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}

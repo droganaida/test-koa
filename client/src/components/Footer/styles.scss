@@ -1,0 +1,15 @@
+.footer {
+  padding: 1.5em;
+  text-align: center;
+  background: #465362;
+}
+
+.brand {
+  color: #ffffff;
+  opacity: .5;
+  transition: .3s;
+  cursor: pointer;
+  &:hover {
+    opacity: 1;
+  }
+}

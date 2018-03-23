@@ -1,5 +1,2 @@
-*.log
-.idea/
-node_modules/
-uploads/
-ready/
+client/node_modules/
+server/node_modules/
