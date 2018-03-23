@@ -1,13 +1,11 @@
 import React from 'react'
 
-import style from './styles.scss'
-
 import TypeHolder from '../TypeHolder/TypeHolder'
 import Masonry from '../Masonry/Masonry'
 
+import libraries from './libraries.json'
 
-import libraries from './_const'
-// "wrapper flex-col flex-center"
+import style from './styles.scss'
 
 const Main = () => (
   <main className={style.main}>

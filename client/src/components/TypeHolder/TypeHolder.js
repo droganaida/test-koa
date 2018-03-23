@@ -5,14 +5,12 @@ import UploadHolder from '../UploadHolder/UploadHolder'
 
 import styles from './styles.scss'
 
-// "type-holder flex-col flex-center"
-
 const TypeHolder = ({ libraries }) => (
   <div className={styles.typeHolder}>
     <select className={styles.resizeType}>
       {
         libraries.map(library => (
-          <option value={library.code}>{library.title}</option>
+          <option value={library.code} key={library.code}>{library.title}</option>
         ))
       }
     </select>
