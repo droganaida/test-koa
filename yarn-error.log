@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/bin/node /usr/share/yarn/bin/yarn.js dev
+  /usr/bin/node /usr/share/yarn/bin/yarn.js build
 
 PATH: 
   /home/colorless/bin:/home/colorless/.local/bin:/home/colorless/bin:/home/colorless/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin

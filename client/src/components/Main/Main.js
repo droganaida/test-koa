@@ -4,6 +4,7 @@ import ResizeType from '../ResizeType/ResizeType'
 import Uploader from '../Uploader/Uploader'
 import Masonry from '../Masonry/Masonry'
 
+import fetchPostApi from '../../api'
 import libraries from './libraries.json'
 
 import style from './styles.scss'
@@ -12,7 +13,8 @@ import style from './styles.scss'
 class Main extends Component {
   state = {
     selectedType: 'im',
-    selectedFiles: null,
+    selectedFiles: [],
+    resizeFiles: [],
   }
 
   handlerSelectedType = (event) => {
@@ -20,11 +22,19 @@ class Main extends Component {
   }
 
   handlerSelectedFiles = (event) => {
-    this.setState({ selectedFiles: event.target.files })
+    this.setState({ selectedFiles: Array.from(event.target.files) }, this.uploadFiles)
+  }
+
+  async uploadFiles() {
+    const files = await fetchPostApi({ files: this.state.selectedFiles, url: '/', type: this.state.selectedType })
+    this.setState(prevState => ({
+      resizeFiles: [...prevState.resizeFiles, ...files],
+    }))
   }
 
   render() {
     console.log(this.state.selectedType, this.state.selectedFiles)
+    const { resizeFiles } = this.state
     return (
       <main className={style.main}>
         <h1 className={style.title}>Выбери файл и инструмент нарезки</h1>
@@ -32,7 +42,7 @@ class Main extends Component {
           <ResizeType libraries={libraries} changeType={this.handlerSelectedType} />
           <Uploader changeFiles={this.handlerSelectedFiles} />
         </div>
-        <Masonry />
+        <Masonry files={resizeFiles} />
       </main>
     )
   }
