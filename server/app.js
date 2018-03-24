@@ -28,7 +28,7 @@ app.use(bodyParser({
 app.use(middlewares);
 app.use(serve('.'));
 app.use(serve(__dirname + '/public'));
-app.use(views(path.join(__dirname, '/templates'), { extension: 'ejs' }));
+// app.use(views(path.join(__dirname, '/templates'), { extension: 'ejs' }));
 app.use(require('./routes').routes());
 
 app.listen(config.port, () => console.log(`Вишу на порту ${config.port}`));
