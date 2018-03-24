@@ -2,8 +2,8 @@ import React from 'react'
 
 import style from './styles.scss'
 
-const UploadHolder = () => (
-  <label htmlFor="file" className={style.uploadHolder}>
+const Uploader = () => (
+  <label htmlFor="file" className={style.uploadLabel}>
     <input
       className={style.uploadInput}
       id="file"
@@ -16,4 +16,4 @@ const UploadHolder = () => (
   </label>
 )
 
-export default UploadHolder
+export default Uploader

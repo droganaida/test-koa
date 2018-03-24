@@ -10,3 +10,10 @@
 }
 
 .title {}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1.5em 0;
+}
