@@ -1,5 +1,5 @@
 
-let config = {};
+const config = {};
 
 config.port = 6008;
 
@@ -31,7 +31,7 @@ config.directories = {
 };
 
 config.limits = {
-    maxFileSize: 100*1024*1024
+    maxFileSize: 100 * 1024 * 1024
 };
 
 module.exports = config;
