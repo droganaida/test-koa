@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 
 import ResizeType from '../ResizeType/ResizeType'
 import Uploader from '../Uploader/Uploader'
@@ -9,23 +9,28 @@ import libraries from './libraries.json'
 import style from './styles.scss'
 
 
-class Main extends PureComponent {
+class Main extends Component {
   state = {
-    selectValue: 'im',
+    selectedType: 'im',
+    selectedFiles: null,
   }
 
-  handleChangeSelect = (event) => {
-    this.setState({ selectValue: event.target.value })
+  handlerSelectedType = (event) => {
+    this.setState({ selectedType: event.target.value })
+  }
+
+  handlerSelectedFiles = (event) => {
+    this.setState({ selectedFiles: event.target.files })
   }
 
   render() {
-    console.log(this.state.selectValue)
+    console.log(this.state.selectedType, this.state.selectedFiles)
     return (
       <main className={style.main}>
         <h1 className={style.title}>Выбери файл и инструмент нарезки</h1>
         <div className={style.wrapper}>
-          <ResizeType libraries={libraries} changeSelect={this.handleChangeSelect} />
-          <Uploader />
+          <ResizeType libraries={libraries} changeType={this.handlerSelectedType} />
+          <Uploader changeFiles={this.handlerSelectedFiles} />
         </div>
         <Masonry />
       </main>
