@@ -1,0 +1,14 @@
+.error {
+  position: relative;
+  padding: 48px 0;
+}
+
+.errorIcon {
+  margin: auto;
+  font-size: 96px;
+  color: rgba(255,0,0,0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

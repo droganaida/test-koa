@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import ResizeType from '../ResizeType/ResizeType'
 import Uploader from '../Uploader/Uploader'
 import Masonry from '../Masonry/Masonry'
+import ServerError from '../ServerError/ServerError'
 
 import fetchPostApi from '../../api'
 import libraries from './libraries.json'
@@ -15,6 +16,7 @@ class Main extends Component {
     selectedType: 'im',
     selectedFiles: [],
     resizeFiles: [],
+    error: false,
   }
 
   handlerSelectedType = (event) => {
@@ -26,15 +28,18 @@ class Main extends Component {
   }
 
   async uploadFiles() {
-    const files = await fetchPostApi({ files: this.state.selectedFiles, url: '/', type: this.state.selectedType })
-    this.setState(prevState => ({
-      resizeFiles: [...prevState.resizeFiles, ...files],
-    }))
+    try {
+      const files = await fetchPostApi({ files: this.state.selectedFiles, url: '/', type: this.state.selectedType })
+      this.setState(prevState => ({
+        resizeFiles: [...prevState.resizeFiles, ...files],
+      }))
+    } catch (error) {
+      this.setState({ error: true })
+    }
   }
 
   render() {
-    console.log(this.state.selectedType, this.state.selectedFiles)
-    const { resizeFiles } = this.state
+    const { resizeFiles, error } = this.state
     return (
       <main className={style.main}>
         <h1 className={style.title}>Выбери файл и инструмент нарезки</h1>
@@ -42,7 +47,13 @@ class Main extends Component {
           <ResizeType libraries={libraries} changeType={this.handlerSelectedType} />
           <Uploader changeFiles={this.handlerSelectedFiles} />
         </div>
-        <Masonry files={resizeFiles} />
+        {
+          error ? (
+            <ServerError />
+          ) : (
+            <Masonry files={resizeFiles} />
+          )
+        }
       </main>
     )
   }

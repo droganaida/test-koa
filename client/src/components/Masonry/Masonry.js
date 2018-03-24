@@ -2,11 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import style from './styles.scss'
+import ImageCard from '../ImageCard/ImageCard'
 
 const Masonry = ({ files }) => (
   <div id="uploaded" className={style.masonry}>
     {
-      files.map(file => `${file.path} ${file.time} ${file.size}`)
+      files.map(file => <ImageCard key={file.path} {...file} />)
     }
   </div>
 )

@@ -1,0 +1,20 @@
+.image-card {
+  display: inline-block;
+  margin: 0 0 1em;
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.18);
+  padding: 1.5em;
+}
+
+.image {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.text {
+  display: inline-block;
+  margin: 1em 0 0 0;
+}

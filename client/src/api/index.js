@@ -11,17 +11,22 @@ async function requestApi(url, body) {
       if (response.ok) {
         return response.json()
       }
-      return response.text()
+      throw new Error(response.statusText)
     })
-    .catch(error => console.log(error))
+    .catch((error) => {
+      throw error
+    })
 }
 
 async function fetchPostApi({ url = '/', files = [], type = 'im' }) {
-  const bodies = files.map(file => makeRequestBody(file, type))
-  //  console.log(bodies)
-  const xhrArray = bodies.map(body => requestApi(url, body))
-  //  console.log(xhrArray)
-  return Promise.all(xhrArray)
+  try {
+    const xhrArray = files
+      .map(file => makeRequestBody(file, type))
+      .map(body => requestApi(url, body))
+    return Promise.all(xhrArray)
+  } catch (error) {
+    throw error
+  }
 }
 
 export default fetchPostApi
