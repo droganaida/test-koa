@@ -14,7 +14,6 @@ import style from './styles.scss'
 class Main extends Component {
   state = {
     selectedType: 'im',
-    selectedFiles: [],
     resizeFiles: [],
     error: false,
   }
@@ -24,14 +23,14 @@ class Main extends Component {
   }
 
   handlerSelectedFiles = (event) => {
-    this.setState({ selectedFiles: Array.from(event.target.files) }, this.uploadFiles)
+    this.uploadFiles(Array.from(event.target.files))
   }
 
-  async uploadFiles() {
+  async uploadFiles(files) {
     try {
-      const files = await fetchPostApi({ files: this.state.selectedFiles, url: '/', type: this.state.selectedType })
+      const resizeFiles = await fetchPostApi({ files, url: '/', type: this.state.selectedType })
       this.setState(prevState => ({
-        resizeFiles: [...prevState.resizeFiles, ...files],
+        resizeFiles: [...prevState.resizeFiles, ...resizeFiles],
       }))
     } catch (error) {
       this.setState({ error: true })
