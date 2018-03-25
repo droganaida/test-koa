@@ -18,7 +18,7 @@ async function requestApi(url, body) {
     })
 }
 
-async function fetchPostApi({ url = '/', files = [], type = 'im' }) {
+async function fetchPostApi(url, files, type) {
   try {
     const xhrArray = files
       .map(file => makeRequestBody(file, type))

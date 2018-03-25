@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import style from './styles.scss'
 
-const Uploader = ({ changeFiles }) => (
+const Uploader = ({ selectedFiles }) => (
   <label htmlFor="file" className={style.uploadLabel}>
     <input
       className={style.uploadInput}
@@ -12,14 +12,14 @@ const Uploader = ({ changeFiles }) => (
       name="uploader"
       multiple="multiple"
       accept=".jpg, .jpeg, .png"
-      onChange={changeFiles}
+      onChange={selectedFiles}
     />
     Нажми меня
   </label>
 )
 
 Uploader.propTypes = {
-  changeFiles: PropTypes.func.isRequired,
+  selectedFiles: PropTypes.func.isRequired,
 }
 
 export default Uploader

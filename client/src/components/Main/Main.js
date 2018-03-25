@@ -28,7 +28,7 @@ class Main extends Component {
 
   async uploadFiles(files) {
     try {
-      const resizeFiles = await fetchPostApi({ files, url: '/', type: this.state.selectedType })
+      const resizeFiles = await fetchPostApi('http://localhost:6008', files, this.state.selectedType)
       this.setState(prevState => ({
         resizeFiles: [...prevState.resizeFiles, ...resizeFiles],
       }))
@@ -44,7 +44,7 @@ class Main extends Component {
         <h1 className={style.title}>Выбери файл и инструмент нарезки</h1>
         <div className={style.wrapper}>
           <ResizeType libraries={libraries} changeType={this.handlerSelectedType} />
-          <Uploader changeFiles={this.handlerSelectedFiles} />
+          <Uploader selectedFiles={this.handlerSelectedFiles} />
         </div>
         {
           error ? (
